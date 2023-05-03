@@ -1,6 +1,8 @@
 // Dependencies
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const validate = require('mongoose-validator');
+const reactionSchema = require('./Reaction');
+const formatDate = require('../utils/formatDate');
 
 // Thought:
 const thoughtSchema = new Schema(
@@ -31,6 +33,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            // get: createdAt => formatDate(createdAt)
             get: function (timestamp) {
                 return timestamp.toLocaleString();
             }
@@ -59,6 +62,7 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             virtuals: true,
+            getters: true
         },
         id: false
     }
