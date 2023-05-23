@@ -4,8 +4,9 @@
   "description": "Back-end for a social media application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm start"
+    "start": "node index",
+    "seed": "node utils/seed",
+    "heroku-postbuild": "node utils/seed.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/itlleat/mongo-mango-social-club/issues"
   },
-  "homepage": "https://github.com/itlleat/mongo-mango-social-club#readme"
+  "homepage": "https://github.com/itlleat/mongo-mango-social-club#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express.js": "^1.0.0",
+    "mogodb": "^0.0.1-security",
+    "mongoose": "^7.1.0",
+    "mongoose-validator": "^2.1.0",
+    "path-to-regex": "^1.3.8",
+    "path-to-regexp": "^6.2.1",
+    "validator": "^13.9.0"
+  }
 }

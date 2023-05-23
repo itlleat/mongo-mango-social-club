@@ -1,3 +1,4 @@
+const { ObjectID } = require('mongoose').Types;
 const { Thought, User } = require('../models');
 
 module.exports = {
@@ -124,7 +125,8 @@ module.exports = {
                 { _id: req.params.thoughtId },
                 { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { new: true }
-            ),
+            )
+            
             if (!thought) {
                 res.status(404).json({ message: 'Thought withat ID not found!' });
                 return;
