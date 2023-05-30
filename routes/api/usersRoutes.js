@@ -10,7 +10,7 @@ const {
 } = require('../../controllers/userController');
 
 // Get all Users
-router.get('/').get(getAllUsers).post(createUser);
+router.route('/').get(getAllUsers).post(createUser);
 // GET a single user by its _id 
 router.route('/:id').get(getUserById).put(updateUser).delete(deleteUser);
 // GET a single user by its _id and populated thought and friend data
