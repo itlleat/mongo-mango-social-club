@@ -1,5 +1,5 @@
 # mongo-mango-social-club
-Back-end for a social media application
+MongoDb back-end for a social media application
 
 # 18 NoSQL: Social Network API
 
@@ -278,3 +278,4 @@ You are required to submit BOTH of the following for review:
 * A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
 
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+

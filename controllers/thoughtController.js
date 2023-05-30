@@ -1,4 +1,5 @@
-const { Thought, User } = require('../models');
+const { ObjectID } = require('mongoose').Types;
+const { User, Thought } = require('../models');
 
 module.exports = {
     // Get all thoughts
@@ -44,8 +45,8 @@ module.exports = {
         try {
             const thought = await Thought.create(req.body);
             const newThought = await User.findOneAndUpdate(
-                { username: req.bod.username },
-                { $addToSet: { thoughts: thoughtData._id } },
+                { username: req.body.username },
+                { $addToSet: { thoughts: thought._id } },
                 { new: true }
             );
             res.json(thought);
@@ -124,7 +125,8 @@ module.exports = {
                 { _id: req.params.thoughtId },
                 { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { new: true }
-            ),
+            )
+            
             if (!thought) {
                 res.status(404).json({ message: 'Thought withat ID not found!' });
                 return;

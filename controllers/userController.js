@@ -1,68 +1,52 @@
-// const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
-// Function to get total number of users
-// const headCount = async () => {
-//     const numberOfUsers = await User.aggregate()
-//     .count('userCount');
-//     return numberOfUsers;
-// }
+
 
 module.exports = {
     // Get all Users
-    async getUsers(req, res) {
+    async getAllUsers(req, res) {
         try {
-            // const users = await User.find();
-
-            // const userObj = {
-            //     users,
-            //     headCount: await headCount(),
-            // };
-            const user = await User.find()
-                .populate({
-                    path: 'thoughts',
-                    select: '-__v'
-                })
-                .select('-__v')
-                .sort({ _id: 1 });
-            res.Json(user);
-
-            // res.json(userObj);
+          const user = await User.find()
+            .populate({
+              path: 'thoughts',
+              select: '-__v'
+            })
+            .select('-__v')
+            .sort({ _id: 1 });
+          res.json(user);
         } catch (err) {
-            console.log(err);
-            return res.status(500).json(err);
+          console.log(err);
+          return res.status(500).json(err);
         }
-    },
+      },
 
     // Get a single user
-    //*********NEED TO CHECK */
-    async getSingleUser(req, res) {
+
+
+    async getUserById(req, res) {
         try {
-            const user = await User.findOne({ _id: req.params.id })
-             .populate({
-                path: 'thoughts',
-                select: '-__v'
-             })   
-            
+          const user = await User.findById(req.params.id)
+            .populate({
+              path: 'thoughts',
+              select: '-__v',
+            })
+            .populate({
+              path: 'friends',
+              select: '-__v',
+            })
             .select('-__v');
-
-            if (!userData) {
-                res.status(404).json({ message: 'No user with that ID found!' });
-                return;
-            }
-
-            // res.json({
-            //     user,
-            //     thoughts: await thoughts(req.params.userId),
-            //     friends: await friends(req.params.userId),
-            //     reactions: await reactions(req.params.userId),
-            // });
-            res.json(user);
+      
+          if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+          }
+      
+          res.json(user);
         } catch (err) {
-            console.log(err);
-            return res.status(500).json(err);
+          console.error(err);
+          res.status(500).json({ message: 'Server error' });
         }
-    },
+      },
+      
 
     // Create new user
     async createUser(req, res) {
@@ -98,7 +82,7 @@ async updateUser({ params, body }, res) {
             new: true,
             runValidators: true,
         });
-        if (!userData) {
+        if (!user) {
             res.status(404).json({ message: "Nooo that user cannot be found by this ID!" });
             return;
         }
@@ -143,6 +127,6 @@ async deleteOldFriend(req, res) {
         console.log(err);
         res.status(500).json(err);
     }
-},
+}
 
 };
