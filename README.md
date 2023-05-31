@@ -1,281 +1,84 @@
-# mongo-mango-social-club
-MongoDb back-end for a social media application
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT "Click to view the MIT License on opensource.org")
 
-# 18 NoSQL: Social Network API
+# Mongo Mango Social Club
 
-## Your Task
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+  <li><a href="#project-description">Project Description</a></li>
+  <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage-examples">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#test-instructions">Testing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#questions">Questions</a></li>
+  </ol>
+</details>
 
-MongoDB is a popular choice for many social networks due to its speed with large amounts of data and flexibility with unstructured data. Over the last part of this course, you’ll use several of the technologies that social networking platforms use in their full-stack applications. Because the foundation of these applications is data, it’s important that you understand how to build and structure the API first.
+## Project Description
 
-Your Challenge is to build an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. You’ll use Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the [Express.js](https://www.npmjs.com/package/express) and [Mongoose](https://www.npmjs.com/package/mongoose) packages, you may also optionally use a JavaScript date library of your choice or the native JavaScript `Date` object to format timestamps.
+Welcome to the Mongo Mango Social Club! This is an API for a social network that lets users select friends, share thoughts, and share reactions to others thoughts. The project uses Express.js for routing, a MongoDB database, and the Mongoose ODM. 
 
-No seed data is provided, so you’ll need to create your own data using Insomnia after you’ve created your API.
+### Video Demonstration
 
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
+https://drive.google.com/file/d/1d-RxeXk7B4mJB7w4a4YcHqoYu6TLc_Ye/view
 
-## User Story
+### GitHub Repo
 
-```md
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
-```
+https://github.com/itlleat/mongo-mango-social-club
 
-## Acceptance Criteria
+## Installation
 
-```md
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-```
+Open the terminal in the root directory and enter "npm i". enter "npm run seed" and then "npm start". The terminal should say it's listening. 
 
-## Mock Up
+## Usage Examples
 
-The following animations show examples of the application's API routes being tested in Insomnia.
+### view all users 
 
-The following animation shows GET routes to return all users and all thoughts being tested in Insomnia:
+<img width="500" alt="get all users" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/0c22665c-d7d6-4aec-96e4-794e311866e2">
 
-![Demo of GET routes to return all users and all thoughts being tested in Insomnia.](./Assets/18-nosql-homework-demo-01.gif)
+### view user by id
 
-The following animation shows GET routes to return a single user and a single thought being tested in Insomnia:
+<img width="514" alt="get user by id" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/a2841242-300e-4b10-8f1f-fd1dd04d3b13">
 
-![Demo that shows GET routes to return a single user and a single thought being tested in Insomnia.](./Assets/18-nosql-homework-demo-02.gif)
+### create new user
 
-The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia:
+<img width="511" alt="create new user and second user" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/17e29d8d-dbd4-4633-95ac-1aa373ee7bfe">
 
-![Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia.](./Assets/18-nosql-homework-demo-03.gif)
+### update a user
 
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
+<img width="516" alt="update a user" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/16a8a108-2a67-498e-814b-576a6ac12615">
 
-The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
+### delete a user
 
-![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
+<img width="505" alt="delete a user" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/518c4443-000f-4a56-951e-fe54c5b5640f">
 
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
+### add and delete a friend
 
-## Getting Started
+<img width="474" alt="add and delete a friend" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/00fb31c1-d16f-4e07-aa67-7e687fa78db5">
 
-Be sure to have MongoDB installed on your machine. Follow the [MongoDB installation guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb) to install MongoDB locally.
+### add and delete a reaction
 
-Use the following guidelines to set up your models and API routes:
+<img width="493" alt="add and delete reaction" src="https://github.com/itlleat/mongo-mango-social-club/assets/118778670/605cd281-7611-46ec-98a7-e731a420ec4e">
 
-### Models
+## Contributing
 
-**User**:
+### Guidelines
 
-* `username`
-  * String
-  * Unique
-  * Required
-  * Trimmed
+Please feel welcome to clone the repo and make additions, edit or expand it for your own personal use, or add pseudo code suggestions. If you'd like to make changes to the main branch please let me know through emailor make a pull request.
 
-* `email`
-  * String
-  * Required
-  * Unique
-  * Must match a valid email address (look into Mongoose's matching validation)
+## Test Instructions
 
-* `thoughts`
-  * Array of `_id` values referencing the `Thought` model
+If there is an issue with functionality please let me know. To test it's working correctly you need to manually run the routes through an application of your choice. 
 
-* `friends`
-  * Array of `_id` values referencing the `User` model (self-reference)
+## License
 
-**Schema Settings**:
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT "Click to view the MIT License on opensource.org")
 
-Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
+## Questions
 
----
+### Please reach out via the links below to reach me with additional questions.
 
-**Thought**:
+#### https://github.com/itlleat
 
-* `thoughtText`
-  * String
-  * Required
-  * Must be between 1 and 280 characters
-
-* `createdAt`
-  * Date
-  * Set default value to the current timestamp
-  * Use a getter method to format the timestamp on query
-
-* `username` (The user that created this thought)
-  * String
-  * Required
-
-* `reactions` (These are like replies)
-  * Array of nested documents created with the `reactionSchema`
-
-**Schema Settings**:
-
-Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
-
----
-
-**Reaction** (SCHEMA ONLY)
-
-* `reactionId`
-  * Use Mongoose's ObjectId data type
-  * Default value is set to a new ObjectId
-
-* `reactionBody`
-  * String
-  * Required
-  * 280 character maximum
-
-* `username`
-  * String
-  * Required
-
-* `createdAt`
-  * Date
-  * Set default value to the current timestamp
-  * Use a getter method to format the timestamp on query
-
-**Schema Settings**:
-
-This will not be a model, but rather will be used as the `reaction` field's subdocument schema in the `Thought` model.
-
-### API Routes
-
-**`/api/users`**
-
-* `GET` all users
-
-* `GET` a single user by its `_id` and populated thought and friend data
-
-* `POST` a new user:
-
-```json
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
-```
-
-* `PUT` to update a user by its `_id`
-
-* `DELETE` to remove user by its `_id`
-
-**BONUS**: Remove a user's associated thoughts when deleted.
-
----
-
-**`/api/users/:userId/friends/:friendId`**
-
-* `POST` to add a new friend to a user's friend list
-
-* `DELETE` to remove a friend from a user's friend list
-
----
-
-**`/api/thoughts`**
-
-* `GET` to get all thoughts
-
-* `GET` to get a single thought by its `_id`
-
-* `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
-
-```json
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-```
-
-* `PUT` to update a thought by its `_id`
-
-* `DELETE` to remove a thought by its `_id`
-
----
-
-**`/api/thoughts/:thoughtId/reactions`**
-
-* `POST` to create a reaction stored in a single thought's `reactions` array field
-
-* `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Deliverables: 10%
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 37%
-
-* A walkthrough video that demonstrates the functionality of the social media API must be submitted, and a link to the video should be included in your README file.
-
-  * The walkthrough video must show all of the technical acceptance criteria being met.
-
-  * The walkthrough video must demonstrate how to start the application’s server.
-
-  * The walkthrough video must demonstrate GET routes for all users and all thoughts being tested in Insomnia.
-
-  * The walkthrough video must demonstrate GET routes for a single user and a single thought being tested in Insomnia.
-
-  * The walkthrough video must demonstrate POST, PUT, and DELETE routes for users and thoughts being tested in Insomnia.
-
-  * Walkthrough video must demonstrate POST and DELETE routes for a user’s friend list being tested in Insomnia.
-
-  * Walkthrough video must demonstrate POST and DELETE routes for reactions to thoughts being tested in Insomnia.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Uses the [Mongoose package](https://www.npmjs.com/package/mongoose) to connect to a MongoDB database.
-
-  * Includes User and Thought models outlined in the Challenge instructions.
-
-  * Includes schema settings for User and Thought models as outlined in the Challenge instructions.
-
-  * Includes Reactions as the `reaction` field's subdocument schema in the Thought model.
-
-  * Uses functionality to format queried timestamps properly.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to a walkthrough video.
-
-### Bonus: +10 Points
-
-* Application deletes a user's associated thoughts when the user is deleted.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
+#### scott.schulman84@gmail.com
