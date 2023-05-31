@@ -97,13 +97,14 @@ async updateUser({ params, body }, res) {
 async addNewFriend(req, res) {
     try {
         const user = await User.findOneAndUpdate(
-            { _id: req.params.UserId },
+            { _id: req.params.userId },
             { $addToSet: { friends: req.params.friendId } },
             { new: true}
         );
         if (!user) {
             res.status(404).json({ message: "Cant find that user ID!" });
-        }
+            return;
+          }
         res.json(user);
     } catch (err) {
         console.log(err);
@@ -115,13 +116,14 @@ async addNewFriend(req, res) {
 async deleteOldFriend(req, res) {
     try {
         const user = await User.findOneAndUpdate(
-            { _id: req.params.UserId },
+            { _id: req.params.userId },
             { $pull: { friends: req.params.friendId } },
             { new: true}
         );
         if (!user) {
             res.status(404).json({ message: "Sorry, can't find that user ID!" });
-        }
+            return;
+          }
         res.json(user);
     } catch (err) {
         console.log(err);

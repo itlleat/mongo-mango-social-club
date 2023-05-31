@@ -82,8 +82,9 @@ module.exports = {
             const thought = await Thought.findOneAndUpdate(
                 { _id: params.id },
                 body,
-                { new: true },
-                { runValidators: true }
+                { new: true ,
+                runValidators: true, 
+            }
             );
 
             if (!thought) {
@@ -101,7 +102,7 @@ module.exports = {
     // Add a new reaction
     async addReaction({ params, body }, res) {
         try {
-            const thought = await thought.findOneAndUpdate(
+            const thought = await Thought.findOneAndUpdate(
                 { _id: params.thoughtId },
                 { $push: { reactions: body } },
                 { new: true },
